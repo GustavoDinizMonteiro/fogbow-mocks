@@ -68,3 +68,15 @@ app.get('/quota/me', (req,res) => {
 app.get('/quota/member/:id', (req,res) => {
     res.send({"vCPU": "14", "ram": "28000", "instances": "7"});
 });
+
+app.get('/quota/aggregated', (req,res) => {
+    res.send({
+        compute: {using: 8, total: 40},
+        vCPU: {using: 8, total: 40},
+        ram: {using: 8, total: 40},
+        volume: {using: 8, total: 40},
+        storage: {using: 8, total: 40},
+        fIPs: {using: 8, total: 40},
+        networks: {using: 8, total: 40}
+    });
+});
