@@ -6,8 +6,8 @@ app.use(bodyParser.json({
     limit: '1mb'
 }));
 
-app.listen(process.env.PORT || 3000, () => {
-    console.log('Listening on port ' + 3000);
+app.listen(process.env.PORT || 8080, () => {
+    console.log('Listening on port ' + 8080);
 });
 
 app.get('/compute', (req, res) => {
@@ -51,4 +51,20 @@ app.get('/network', (req, res) => {
 
 app.get('/members', (req,res) => {
     res.send(['id1', 'id2', 'id3']);
+});
+
+app.get('/quota/shared', (req,res) => {
+    res.send({"vCPU": "2", "ram": "3000", "instances": "1"});
+});
+
+app.get('/quota/available', (req,res) => {
+    res.send({"vCPU": "16", "ram": "48000", "instances": "8"});
+});
+
+app.get('/quota/me', (req,res) => {
+    res.send({"vCPU": "10", "ram": "20000", "instances": "5"});
+});
+
+app.get('/quota/member/:id', (req,res) => {
+    res.send({"vCPU": "14", "ram": "28000", "instances": "7"});
 });
